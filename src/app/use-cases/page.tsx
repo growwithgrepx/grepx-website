@@ -1,3 +1,4 @@
+
 import { PageHeader } from '@/components/shared/PageHeader';
 import { SectionWrapper } from '@/components/shared/SectionWrapper';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -59,8 +60,8 @@ export default function UseCasesPage() {
 
       <SectionWrapper>
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {useCases.map((uc) => (
-            <Card key={uc.title} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
+          {useCases.map((uc, index) => (
+            <Card key={uc.title} className="flex flex-col shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${index * 100}ms` }}>
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
                   {uc.icon}

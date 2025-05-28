@@ -14,8 +14,8 @@ export default function HomePage() {
   return (
     <div className="space-y-12">
       <SectionWrapper className="text-center pt-8 md:pt-12 lg:pt-16">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
-          GrepX: AI-First, <span className="text-primary">Domain-Agnostic</span> Innovation
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+          GrepX: AI-First, Domain-Agnostic Innovation
         </h1>
         <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
           We empower businesses across industries with cutting-edge, adaptable AI solutions, driving strategic advantage and transformative outcomes.
@@ -33,7 +33,7 @@ export default function HomePage() {
       <SectionWrapper id="offerings-overview">
         <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Core Offerings</h2>
         <div className="grid md:grid-cols-3 gap-8">
-          <Card className="shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <Card className="shadow-xl hover:shadow-2xl transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500">
             <CardHeader>
               <BrainCircuit className="h-12 w-12 text-primary mb-4" />
               <CardTitle className="text-2xl">Domain-Agnostic AI Platform</CardTitle>
@@ -46,7 +46,7 @@ export default function HomePage() {
               </Button>
             </CardContent>
           </Card>
-          <Card className="shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <Card className="shadow-xl hover:shadow-2xl transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
             <CardHeader>
               <Lightbulb className="h-12 w-12 text-accent mb-4" />
               <CardTitle className="text-2xl">Strategic AI Consulting</CardTitle>
@@ -59,7 +59,7 @@ export default function HomePage() {
               </Button>
             </CardContent>
           </Card>
-          <Card className="shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <Card className="shadow-xl hover:shadow-2xl transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
             <CardHeader>
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mb-4 lucide lucide-puzzle"><path d="M19.439 7.501c-2.405-2.404-6.313-2.404-8.718 0l-1.21 1.211-.032.032a3.05 3.05 0 0 0 0 4.314l1.193 1.192a3.05 3.05 0 0 0 4.314 0l4.453-4.452Z"/><path d="M12.544 11.456c1.202-1.202 3.156-1.202 4.358 0l1.21 1.21a3.05 3.05 0 0 1 0 4.314l-1.193 1.193a3.05 3.05 0 0 1-4.314 0l-.032-.033-.032-.032Z"/><path d="m4.561 16.499 1.21 1.211c2.405 2.404 6.313 2.404 8.718 0l1.21-1.211M16.439 4.501l-1.211-1.211c-2.405-2.404-6.313-2.404-8.718 0L4.5 4.299"/></svg>
               <CardTitle className="text-2xl">Custom AI Solutions</CardTitle>
@@ -79,7 +79,7 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold text-center mb-2 text-foreground">Experience Our AI</h2>
         <p className="text-center text-muted-foreground mb-10">Interact with our embedded AI tools to see our technology in action.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-start">
-          <Card className="shadow-lg h-full flex flex-col">
+          <Card className="shadow-lg h-full flex flex-col hover:shadow-2xl transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <Lightbulb className="h-8 w-8 text-primary" />
@@ -91,7 +91,7 @@ export default function HomePage() {
               <AiUseCaseSparker />
             </CardContent>
           </Card>
-          <Card className="shadow-lg h-full flex flex-col">
+          <Card className="shadow-lg h-full flex flex-col hover:shadow-2xl transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
             <CardHeader>
               <div className="flex items-center gap-3">
                  <MessageCircleReply className="h-8 w-8 text-primary" />
@@ -103,7 +103,7 @@ export default function HomePage() {
               <QuickReplyAssistant />
             </CardContent>
           </Card>
-          <Card className="shadow-lg h-full flex flex-col md:col-span-2 xl:col-span-1"> {/* Ensures it spans full on md if only 2, or 1/3rd on xl */}
+          <Card className="shadow-lg h-full flex flex-col md:col-span-2 xl:col-span-1 hover:shadow-2xl transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200"> {/* Ensures it spans full on md if only 2, or 1/3rd on xl */}
             <CardHeader>
                <div className="flex items-center gap-3">
                 <Megaphone className="h-8 w-8 text-primary" />

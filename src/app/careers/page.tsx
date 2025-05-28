@@ -1,3 +1,4 @@
+
 import { PageHeader } from '@/components/shared/PageHeader';
 import { SectionWrapper } from '@/components/shared/SectionWrapper';
 import { CareerApplicationForm } from '@/components/forms/CareerApplicationForm';
@@ -39,8 +40,8 @@ export default function CareersPage() {
       <SectionWrapper id="why-grepx" className="bg-secondary/30 rounded-lg">
         <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Why GrepX is a Great Place to Work</h2>
         <div className="grid md:grid-cols-2 gap-8">
-          {whyJoinGrepX.map((item) => (
-            <Card key={item.title} className="shadow-md hover:shadow-lg transition-shadow">
+          {whyJoinGrepX.map((item, index) => (
+            <Card key={item.title} className="shadow-md hover:shadow-lg transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${index * 100}ms` }}>
               <CardHeader className="flex flex-row items-start gap-4">
                 {item.icon}
                 <CardTitle className="text-xl">{item.title}</CardTitle>
@@ -54,7 +55,7 @@ export default function CareersPage() {
       </SectionWrapper>
       
       <SectionWrapper id="culture">
-        <Card className="shadow-lg overflow-hidden">
+        <Card className="shadow-lg overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="md:flex md:flex-row-reverse">
             <div className="md:w-1/2">
               <Image 
@@ -81,7 +82,7 @@ export default function CareersPage() {
       </SectionWrapper>
 
       <SectionWrapper id="talent-pool">
-        <Card className="shadow-xl max-w-2xl mx-auto">
+        <Card className="shadow-xl max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl md:text-3xl">Join Our Talent Pool</CardTitle>
             <p className="text-muted-foreground pt-2">

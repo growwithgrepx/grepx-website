@@ -1,3 +1,4 @@
+
 import { PageHeader } from '@/components/shared/PageHeader';
 import { SectionWrapper } from '@/components/shared/SectionWrapper';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -56,7 +57,7 @@ export default function PlatformPage() {
       />
 
       <SectionWrapper id="platform-overview">
-        <Card className="shadow-lg">
+        <Card className="shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-500">
           <CardHeader>
             <CardTitle className="text-2xl md:text-3xl">The GrepX Strategic Offering</CardTitle>
           </CardHeader>
@@ -80,8 +81,8 @@ export default function PlatformPage() {
       <SectionWrapper id="core-pillars">
         <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Core Technology Pillars</h2>
         <div className="grid md:grid-cols-2 gap-8">
-          {platformPillars.map((pillar) => (
-            <Card key={pillar.title} className="flex flex-col shadow-lg hover:shadow-xl transition-shadow">
+          {platformPillars.map((pillar, index) => (
+            <Card key={pillar.title} className="flex flex-col shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${index * 100}ms` }}>
               <CardHeader className="flex flex-row items-start gap-4">
                 {pillar.icon}
                 <div>
@@ -110,7 +111,7 @@ export default function PlatformPage() {
         <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Key Differentiators</h2>
         <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
           {differentiators.map((item, index) => (
-            <div key={index} className="flex items-start space-x-3">
+            <div key={index} className="flex items-start space-x-3 animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${index * 50}ms` }}>
               <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
               <p className="text-muted-foreground">{item}</p>
             </div>
@@ -119,7 +120,7 @@ export default function PlatformPage() {
       </SectionWrapper>
       
       <SectionWrapper id="integration">
-        <Card className="shadow-lg">
+        <Card className="shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-500">
           <CardHeader className="items-center text-center">
             <GitMerge className="h-12 w-12 text-primary mb-4" />
             <CardTitle className="text-2xl md:text-3xl">Seamless Integration Capabilities</CardTitle>

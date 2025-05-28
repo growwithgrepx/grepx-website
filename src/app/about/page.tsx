@@ -1,3 +1,4 @@
+
 import { PageHeader } from '@/components/shared/PageHeader';
 import { SectionWrapper } from '@/components/shared/SectionWrapper';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -37,7 +38,7 @@ export default function AboutPage() {
       />
 
       <SectionWrapper id="story">
-        <Card className="shadow-lg overflow-hidden">
+        <Card className="shadow-lg overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="md:flex">
             <div className="md:w-1/2">
               <Image 
@@ -65,7 +66,7 @@ export default function AboutPage() {
 
       <SectionWrapper id="mission-vision" className="bg-secondary/30 rounded-lg">
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="shadow-md">
+          <Card className="shadow-md hover:shadow-lg transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500">
             <CardHeader className="flex flex-row items-center gap-4">
               <Target className="h-10 w-10 text-primary" />
               <CardTitle className="text-2xl">Our Mission</CardTitle>
@@ -76,7 +77,7 @@ export default function AboutPage() {
               </p>
             </CardContent>
           </Card>
-          <Card className="shadow-md">
+          <Card className="shadow-md hover:shadow-lg transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
             <CardHeader className="flex flex-row items-center gap-4">
               <Eye className="h-10 w-10 text-accent" />
               <CardTitle className="text-2xl">Our Vision</CardTitle>
@@ -93,8 +94,8 @@ export default function AboutPage() {
       <SectionWrapper id="values">
         <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Core Values</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {coreValues.map((value) => (
-            <Card key={value.name} className="text-center shadow-lg hover:shadow-xl transition-shadow">
+          {coreValues.map((value, index) => (
+            <Card key={value.name} className="text-center shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${index * 100}ms` }}>
               <CardHeader className="items-center">
                 {value.icon}
                 <CardTitle className="mt-4 text-xl">{value.name}</CardTitle>
@@ -108,7 +109,7 @@ export default function AboutPage() {
       </SectionWrapper>
 
       <SectionWrapper id="team-overview">
-        <Card className="shadow-lg text-center">
+        <Card className="shadow-lg text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
           <CardHeader className="items-center">
             <Users className="h-12 w-12 text-primary mb-4" />
             <CardTitle className="text-2xl md:text-3xl">Meet Our Expert Team</CardTitle>

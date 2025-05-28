@@ -1,3 +1,4 @@
+
 import { cn } from "@/lib/utils";
 import type { HTMLAttributes } from "react";
 
@@ -11,7 +12,7 @@ export function SectionWrapper({ children, className, id, ...props }: SectionWra
   return (
     <section
       id={id}
-      className={cn("py-12 md:py-16 lg:py-20", className)}
+      className={cn("py-10 md:py-12 lg:py-16", className)} // Reduced padding
       {...props}
     >
       {children}

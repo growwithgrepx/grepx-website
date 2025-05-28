@@ -1,3 +1,4 @@
+
 import { PageHeader } from '@/components/shared/PageHeader';
 import { SectionWrapper } from '@/components/shared/SectionWrapper';
 import { ContactUsForm } from '@/components/forms/ContactUsForm';
@@ -14,7 +15,7 @@ export default function ContactPage() {
       />
       <SectionWrapper>
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          <Card className="shadow-xl">
+          <Card className="shadow-xl animate-in fade-in slide-in-from-bottom-4 duration-500">
             <CardHeader>
               <CardTitle className="text-2xl md:text-3xl">Contact Form</CardTitle>
               <CardDescription>Send us a message, request a demo, or inquire about our services.</CardDescription>
@@ -24,8 +25,8 @@ export default function ContactPage() {
             </CardContent>
           </Card>
 
-          <div className="space-y-8">
-            <Card className="shadow-lg">
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
+            <Card className="shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02]">
               <CardHeader>
                 <CardTitle className="text-xl">Contact Information</CardTitle>
               </CardHeader>
