@@ -37,11 +37,11 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-6 w-6 text-primary" />
-                  <span className="text-muted-foreground">+1 (555) 123-4567 (Placeholder)</span>
+                  <span className="text-muted-foreground">+65-12345678 (Placeholder)</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="h-6 w-6 text-primary" />
-                  <span className="text-muted-foreground">123 Innovation Drive, Tech City, CA 90210 (Placeholder)</span>
+                  <span className="text-muted-foreground">Singapore (Placeholder)</span>
                 </div>
               </CardContent>
             </Card>
