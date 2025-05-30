@@ -1,9 +1,11 @@
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
+import CosmicBackground from '@/components/shared/cosmic-background'; // Import the new component
 import { cn } from '@/lib/utils';
 
 const geistSans = Geist({
@@ -32,16 +34,30 @@ export default function RootLayout({
         className={cn(
           geistSans.variable, 
           geistMono.variable, 
-          'antialiased min-h-screen flex flex-col'
+          // Remove bg-background from body, it will be handled by sections or the cosmic background
+          'antialiased min-h-screen flex flex-col relative' // Added relative for z-index stacking if needed
         )}
       >
-        <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <CosmicBackground className="-z-10" /> {/* Place background here, behind other elements */}
+        
+        <Header /> {/* Header has its own background and z-index: 50 */}
+        
+        <main className="flex-grow container mx-auto px-4 py-8 relative z-[5]"> 
+          {/* 
+            main needs relative and a z-index higher than cosmic background (0 or -10) 
+            but lower than header/footer.
+            Its background should be transparent for the cosmic background to show through.
+            Individual sections/cards within children will provide their own backgrounds.
+          */}
           {children}
         </main>
-        <Footer />
+        
+        <Footer /> {/* Footer should have its own background and appropriate z-index */}
+        
         <Toaster />
       </body>
     </html>
   );
 }
+
+    

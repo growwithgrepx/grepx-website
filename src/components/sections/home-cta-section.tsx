@@ -11,7 +11,7 @@ export default function HomeCtaSection() {
     <section id="home-cta" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 text-center">
         <AnimatedContent animationType="fadeInUp">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6 text-gradient-primary-accent">
             Ready to Innovate with GrepX?
           </h2>
           <p className="max-w-xl mx-auto text-lg text-foreground/80 mb-10">
@@ -32,8 +32,8 @@ export default function HomeCtaSection() {
                 Or, we can re-use the dialog trigger logic if desired, but that makes this component less standalone.
             */}
             <Button size="lg" variant="outline" className="group" asChild>
-              <Link href="/about">
-                Learn More About Us <MessageSquare className="ml-2 h-5 w-5 group-hover:fill-accent/20 transition-colors" />
+              <Link href="/contact"> {/* Updated to /contact from /about */}
+                Contact Our Experts <MessageSquare className="ml-2 h-5 w-5 group-hover:fill-accent/20 transition-colors" />
               </Link>
             </Button>
           </div>

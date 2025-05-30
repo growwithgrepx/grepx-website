@@ -3,7 +3,6 @@ import { Separator } from '@/components/ui/separator';
 import AnimatedContent from '@/components/shared/animated-content';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase, Target, Eye, Zap, ShieldCheck, Users, Brain, Rocket, Lightbulb } from 'lucide-react';
-import Image from 'next/image';
 
 export default function AboutPage() {
   const coreValues = [
@@ -14,15 +13,15 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="py-12 md:py-20">
+    <div className="py-12 md:py-20 bg-background rounded-lg shadow-md">
       <div className="container mx-auto px-4">
         {/* Section 1: About GrepX Intro */}
         <AnimatedContent animationType="fadeInUp">
           <section className="text-center mb-16 md:mb-24">
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl mb-6">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl mb-6 text-gradient-primary-accent">
               About <span className="text-gradient-primary-accent">GrepX</span>
             </h1>
-            <p className="max-w-3xl mx-auto text-lg text-foreground/80 sm:text-xl md:text-2xl">
+            <p className="max-w-3xl mx-auto text-lg text-foreground/80 sm:text-xl md:text-2xl text-center">
               We are a passionate team of innovators, engineers, and thinkers dedicated to harnessing the power of Artificial Intelligence to solve complex challenges and create a smarter future.
             </p>
           </section>
@@ -44,20 +43,64 @@ export default function AboutPage() {
                 From humble beginnings, we've grown into a dynamic company, driven by a relentless pursuit of innovation and a commitment to delivering exceptional value to our clients. Our story is one of continuous learning, adaptation, and a deep-seated passion for pushing the boundaries of what's possible with AI.
               </p>
             </div>
-            <div className="relative h-72 md:h-96 rounded-lg overflow-hidden shadow-xl group order-1 md:order-2">
-              <Image
-                src="https://placehold.co/600x450.png"
-                alt="GrepX Team Collaborating on Future Technologies"
-                layout="fill"
-                objectFit="cover"
-                className="transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
-                data-ai-hint="team innovation"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:opacity-75 transition-opacity duration-300"></div>
-               <div className="absolute bottom-4 left-4 text-white">
-                <h3 className="text-xl font-semibold">Pioneering Together</h3>
-                <p className="text-sm opacity-90">Crafting the future of AI, one innovation at a time.</p>
-              </div>
+            <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-xl order-1 md:order-2 flex items-center justify-center p-4 bg-card/30 dark:bg-card/20" aria-label="Abstract AI Collaboration Animation: Interconnected nodes and lines, symbolizing collaboration and the formation of an AI neural network structure.">
+              <svg
+                viewBox="0 0 200 160"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-full object-contain"
+              >
+                <g style={{ transformOrigin: 'center center', animation: 'svg-subtle-rotate 75s linear infinite' }}>
+                  {/* Nodes */}
+                  <circle cx="100" cy="35" r="10" fill="hsl(var(--primary))" style={{ animation: 'svg-node-pulse 3.0s ease-in-out infinite' }} />
+                  <circle cx="50" cy="125" r="12" fill="hsl(var(--primary))" style={{ animation: 'svg-node-pulse 3.0s ease-in-out infinite 0.4s' }} />
+                  <circle cx="150" cy="125" r="11" fill="hsl(var(--primary))" style={{ animation: 'svg-node-pulse 3.0s ease-in-out infinite 0.8s' }} />
+                  <circle cx="100" cy="80" r="7" fill="hsla(var(--primary), 0.8)" style={{ animation: 'svg-node-pulse 2.8s ease-in-out infinite 0.2s' }} />
+
+
+                  {/* Connecting Lines with staggered drawing animation */}
+                  <path
+                    d="M100 35 Q75 80 50 125"
+                    stroke="hsl(var(--accent))" strokeOpacity="0.7" strokeWidth="1.5" fill="none"
+                    strokeDasharray="150" strokeDashoffset="150"
+                    style={{ animation: 'svg-line-draw 2.5s ease-out forwards 0.5s' }}
+                  />
+                  <path
+                    d="M50 125 Q100 100 150 125"
+                    stroke="hsl(var(--accent))" strokeOpacity="0.7" strokeWidth="1.5" fill="none"
+                    strokeDasharray="150" strokeDashoffset="150"
+                    style={{ animation: 'svg-line-draw 2.5s ease-out forwards 1s' }}
+                  />
+                  <path
+                    d="M150 125 Q125 80 100 35"
+                    stroke="hsl(var(--accent))" strokeOpacity="0.7" strokeWidth="1.5" fill="none"
+                    strokeDasharray="150" strokeDashoffset="150"
+                    style={{ animation: 'svg-line-draw 2.5s ease-out forwards 1.5s' }}
+                  />
+                   <path
+                    d="M100 35 L100 80" // Vertical from top to middle node
+                    stroke="hsl(var(--accent))" strokeOpacity="0.6" strokeWidth="1" fill="none"
+                    strokeDasharray="100" strokeDashoffset="100"
+                    style={{ animation: 'svg-line-draw 2.0s ease-out forwards 2s' }}
+                  />
+                   <path
+                    d="M50 125 L100 80" // From bottom-left to middle node
+                    stroke="hsl(var(--accent))" strokeOpacity="0.6" strokeWidth="1" fill="none"
+                    strokeDasharray="100" strokeDashoffset="100"
+                    style={{ animation: 'svg-line-draw 2.0s ease-out forwards 2.2s' }}
+                  />
+                   <path
+                    d="M150 125 L100 80" // From bottom-right to middle node
+                    stroke="hsl(var(--accent))" strokeOpacity="0.6" strokeWidth="1" fill="none"
+                    strokeDasharray="100" strokeDashoffset="100"
+                    style={{ animation: 'svg-line-draw 2.0s ease-out forwards 2.4s' }}
+                  />
+
+                  {/* Smaller decorative/connecting nodes */}
+                  <circle cx="70" cy="75" r="3" fill="hsla(var(--accent), 0.5)" style={{ animation: 'svg-node-pulse 2.5s ease-in-out infinite 0.3s' }} />
+                  <circle cx="130" cy="75" r="3" fill="hsla(var(--accent), 0.5)" style={{ animation: 'svg-node-pulse 2.5s ease-in-out infinite 0.8s' }} />
+                  <circle cx="100" cy="115" r="2.5" fill="hsla(var(--accent), 0.4)" style={{ animation: 'svg-node-pulse 2.5s ease-in-out infinite 1.2s' }} />
+                </g>
+              </svg>
             </div>
           </section>
         </AnimatedContent>
@@ -111,13 +154,19 @@ export default function AboutPage() {
                 <AnimatedContent key={value.title} animationType="fadeInUp" delay={`${700 + index * 100}ms`}>
                   <Card className="text-left h-full transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl group border-transparent hover:border-primary/50">
                     <CardHeader className="items-center pt-6">
-                      <div className="p-4 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-                         <value.icon className="h-10 w-10 md:h-12 md:w-12 text-primary transition-transform duration-300" />
+                      <div 
+                        className="p-4 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors duration-300 opacity-0"
+                        style={{ animation: `icon-container-reveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${0.2 + index * 0.1}s forwards` }}
+                      >
+                         <value.icon 
+                           className="h-10 w-10 md:h-12 md:w-12 text-primary transition-transform duration-300 opacity-0"
+                           style={{ animation: `lucide-icon-reveal 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${0.35 + index * 0.1}s forwards` }}
+                         />
                       </div>
                       <CardTitle className="text-xl lg:text-2xl font-semibold group-hover:text-primary transition-colors text-center">{value.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="pb-6">
-                      <p className="text-foreground/70 text-sm md:text-base">{value.description}</p>
+                      <p className="text-foreground/70 text-sm md:text-base text-left">{value.description}</p>
                     </CardContent>
                   </Card>
                 </AnimatedContent>
@@ -129,3 +178,4 @@ export default function AboutPage() {
     </div>
   );
 }
+

@@ -1,5 +1,5 @@
 
-"use client"; // Add this because we'll use useState for dialog
+"use client";
 
 import Link from 'next/link';
 import Logo from '@/components/shared/logo';
@@ -10,13 +10,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronDown } from 'lucide-react';
-import React, { useState } from 'react';
-import ContactForm from '@/components/contact-form';
+import React from 'react'; // Removed useState as it's no longer needed for a dialog
 
 export default function Header() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  // Removed isContactModalOpen state and setIsContactModalOpen
 
   const mainNavItems = [
     { name: 'Home', href: '/' },
@@ -57,39 +55,20 @@ export default function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Dialog open={isContactModalOpen} onOpenChange={setIsContactModalOpen}>
-            <DialogTrigger asChild>
-              <button className="text-foreground/80 transition-colors hover:text-primary text-sm font-medium focus:outline-none">
-                Contact Us
-              </button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[480px]">
-              <DialogHeader>
-                <DialogTitle>Contact Us</DialogTitle>
-                <DialogDescription>
-                  We'd love to hear from you! Please fill out the form below and we'll get back to you as soon as possible.
-                </DialogDescription>
-              </DialogHeader>
-              <ContactForm onClose={() => setIsContactModalOpen(false)} />
-            </DialogContent>
-          </Dialog>
+          {/* Changed DialogTrigger to a simple Link */}
+          <Link
+            href="/contact"
+            className="text-foreground/80 transition-colors hover:text-primary text-sm font-medium focus:outline-none"
+          >
+            Contact Us
+          </Link>
         </nav>
         
         <div className="md:hidden">
-          <Dialog open={isContactModalOpen} onOpenChange={setIsContactModalOpen}>
-            <DialogTrigger asChild>
-              <Button variant="outline" size="sm">Contact Us</Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[480px]">
-              <DialogHeader>
-                <DialogTitle>Contact Us</DialogTitle>
-                <DialogDescription>
-                   We'd love to hear from you! Please fill out the form below and we'll get back to you as soon as possible.
-                </DialogDescription>
-              </DialogHeader>
-              <ContactForm onClose={() => setIsContactModalOpen(false)} />
-            </DialogContent>
-          </Dialog>
+          {/* Changed DialogTrigger Button to a Link Button for mobile */}
+          <Button variant="outline" size="sm" asChild>
+            <Link href="/contact">Contact Us</Link>
+          </Button>
         </div>
       </div>
     </header>

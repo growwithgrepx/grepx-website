@@ -5,7 +5,7 @@ import AnimatedContent from '@/components/shared/animated-content';
 
 export default function PlatformPage() {
   return (
-    <div className="py-8">
+    <div className="py-8 bg-background rounded-lg shadow-md"> {/* Added background to the page container */}
       <AnimatedContent animationType="fadeInUp">
         <section className="text-center mb-12 md:mb-16">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl mb-6 text-gradient-primary-accent">
@@ -16,7 +16,7 @@ export default function PlatformPage() {
             </p>
         </section>
       </AnimatedContent>
-      <PlatformPillarsSection />
+      <PlatformPillarsSection /> {/* This section's cards have their own backgrounds */}
       <div className="container mx-auto px-4">
         <Separator className="my-12 md:my-16" />
       </div>
@@ -31,3 +31,5 @@ export default function PlatformPage() {
     </div>
   );
 }
+
+    

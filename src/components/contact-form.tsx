@@ -9,11 +9,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from 'lucide-react';
 
-interface ContactFormProps {
-  onClose: () => void;
-}
+// Removed onClose from ContactFormProps as it's no longer needed for a dedicated page
+interface ContactFormProps {}
 
-export default function ContactForm({ onClose }: ContactFormProps) {
+export default function ContactForm({}: ContactFormProps) { // Removed onClose from destructuring
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -41,7 +40,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
     setSubject('');
     setMessage('');
     setIsSubmitting(false);
-    onClose(); // Close the dialog
+    // Removed onClose(); as it's no longer needed for a dedicated page
   };
 
   return (
