@@ -5,8 +5,9 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import CosmicBackground from '@/components/shared/cosmic-background'; // Import the new component
+import CosmicBackground from '@/components/shared/cosmic-background'; 
 import { cn } from '@/lib/utils';
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -29,35 +30,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body 
         className={cn(
           geistSans.variable, 
           geistMono.variable, 
-          // Remove bg-background from body, it will be handled by sections or the cosmic background
-          'antialiased min-h-screen flex flex-col relative' // Added relative for z-index stacking if needed
+          'antialiased min-h-screen flex flex-col relative'
         )}
       >
-        <CosmicBackground className="-z-10" /> {/* Place background here, behind other elements */}
-        
-        <Header /> {/* Header has its own background and z-index: 50 */}
-        
-        <main className="flex-grow container mx-auto px-4 py-8 relative z-[5]"> 
-          {/* 
-            main needs relative and a z-index higher than cosmic background (0 or -10) 
-            but lower than header/footer.
-            Its background should be transparent for the cosmic background to show through.
-            Individual sections/cards within children will provide their own backgrounds.
-          */}
-          {children}
-        </main>
-        
-        <Footer /> {/* Footer should have its own background and appropriate z-index */}
-        
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <CosmicBackground className="-z-10" />
+          <Header />
+          <main className="flex-grow container mx-auto px-4 py-8 relative z-[5]"> 
+            {children}
+          </main>
+          <Footer />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-
-    

@@ -13,14 +13,10 @@ body {
     --background: 210 27% 95%; /* #F0F4F8 */
     --foreground: 210 15% 20%; /* Dark Gray for text */
     --primary: 207 68% 73%; /* #89BEEB */
+    --primary-foreground: 207 30% 15%; /* Dark Blue/Gray for text on primary */
     --accent: 120 73% 75%; /* #90EE90 */
-
-    /* Dark Theme Override Colors (used by CosmicBackground via JS) */
-    --background-dark: 210 15% 10%;
-    --foreground-dark: 210 27% 90%;
-    --primary-dark: 207 68% 65%;
-    --accent-dark: 120 65% 60%;
-
+    --accent-foreground: 120 30% 15%; /* Dark Green/Gray for text on accent */
+    
     --muted: 210 25% 90%;
     --muted-foreground: 210 15% 45%;
 
@@ -33,14 +29,8 @@ body {
     --border: 210 20% 88%;
     --input: 210 20% 88%;
 
-    /* --primary: 207 68% 73%; /* #89BEEB */ /* Already defined */
-    --primary-foreground: 207 30% 15%; /* Dark Blue/Gray for text on primary */
-
     --secondary: 210 20% 92%; /* Lighter than background, for secondary elements */
     --secondary-foreground: 210 15% 25%;
-
-    /* --accent: 120 73% 75%; /* #90EE90 */ /* Already defined */
-    --accent-foreground: 120 30% 15%; /* Dark Green/Gray for text on accent */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -58,21 +48,29 @@ body {
     /* Sidebar variables - maintain existing or adjust if GrepX specifics are needed */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%; /* Default, can be overridden by GrepX primary if sidebar matches main theme */
+    --sidebar-primary: 240 5.9% 10%; 
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dark Theme Override Colors for CosmicBackground JS (if still used) */
+    /* It's better if CosmicBackground reads from the .dark class variables instead */
+    --background-dark: 210 15% 10%;
+    --foreground-dark: 210 27% 90%;
+    --primary-dark: 207 68% 65%;
+    --accent-dark: 120 65% 60%;
   }
 
   .dark {
     --background: 210 15% 10%; /* Dark blue-gray for dark mode */
     --foreground: 210 27% 90%; /* Light gray for text */
     --primary: 207 68% 65%; /* Slightly adjusted primary for dark mode */
+    --primary-foreground: 0 0% 100%; /* White text on dark primary */
     --accent: 120 65% 60%; /* Slightly adjusted accent for dark mode */
+    --accent-foreground: 0 0% 100%; /* White text on dark accent */
     
-    /* Ensure dark theme specific variables are defined for other components */
     --muted: 210 15% 20%;
     --muted-foreground: 210 20% 60%;
 
@@ -85,19 +83,13 @@ body {
     --border: 210 15% 25%;
     --input: 210 15% 25%;
 
-    /* --primary: 207 68% 65%; /* Already defined */
-    --primary-foreground: 0 0% 100%;
-
     --secondary: 210 15% 18%;
     --secondary-foreground: 210 27% 90%;
-
-    /* --accent: 120 65% 60%; /* Already defined */
-    --accent-foreground: 0 0% 100%;
     
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%; /* Darker destructive */
+    --destructive-foreground: 0 0% 98%; /* Keep light text on dark destructive */
 
-    --ring: 207 68% 55%;
+    --ring: 207 68% 55%; /* Darker ring */
     
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -108,7 +100,7 @@ body {
     /* Sidebar dark variables */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 207 68% 65%; /* Match main primary in dark mode if desired */
+    --sidebar-primary: 207 68% 65%; 
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
@@ -122,8 +114,7 @@ body {
     @apply border-border;
   }
   body {
-    /* bg-background is removed here, will be applied by sections or CosmicBackground provides the base visual */
-    @apply text-foreground;
+    @apply text-foreground bg-background; /* Apply bg-background here for global default */
     scroll-behavior: smooth;
   }
   ::selection {
@@ -181,12 +172,12 @@ body {
 }
 
 /* SVG Animations for About Page Story Section */
-@keyframes svg-node-pulse { /* Enhanced */
-  0%, 100% { opacity: 0.5; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.1); }
+@keyframes svg-node-pulse { 
+  0%, 100% { opacity: 0.6; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.05); }
 }
 
-@keyframes svg-line-draw { /* Enhanced */
+@keyframes svg-line-draw { 
   from { stroke-dashoffset: 150; opacity: 0; }
   to { stroke-dashoffset: 0; opacity: 0.7; }
 }
@@ -200,7 +191,7 @@ body {
 @keyframes scanner-line-move {
   0% { transform: translateY(0%); }
   50% { transform: translateY(100%); }
-  50.01% { transform: translateY(100%); } /* Ensure direction change is smooth for infinite loop */
+  50.01% { transform: translateY(100%); } 
   100% { transform: translateY(0%); }
 }
 
@@ -210,29 +201,29 @@ body {
   70%, 100% { opacity: 0; transform: scaleX(0.2); }
 }
 
-@keyframes lock-body-disappear {
+@keyframes lock-body-disappear { /* For "Unlock Document Insights" */
   0% { opacity: 1; transform: scale(1) translateY(0); }
   100% { opacity: 0; transform: scale(0.8) translateY(5px); }
 }
 
-@keyframes lock-shackle-open {
+@keyframes lock-shackle-open { /* For "Unlock Document Insights" */
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
   50% { transform: translateY(-5px) rotate(-45deg); opacity: 1; }
   100% { transform: translateY(-7px) rotate(-60deg); opacity: 0; }
 }
 
-@keyframes insight-bar-grow {
+@keyframes insight-bar-grow { /* For "Unlock Document Insights" */
   from { transform: scaleY(0); opacity: 0; }
   to { transform: scaleY(1); opacity: 1; }
 }
 
-@keyframes fade-in-opacity { /* Used for document insight bars appearing after lock */
+@keyframes fade-in-opacity { /* General fade-in, used by Document Insights bars group */
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* Animations for Core Offerings Section Icons */
-@keyframes layers-pop-in-reveal {
+/* Core Offering Icon Reveal Animations */
+@keyframes layers-pop-in-reveal { /* For Domain Platform Icon */
   0% { opacity: 0; transform: translateY(10px) scale(0.8); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
@@ -240,7 +231,17 @@ body {
   animation: layers-pop-in-reveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
 }
 
-@keyframes lightbulb-glow-in-reveal {
+@keyframes domain-layer-breathe { /* For Domain Platform Icon - internal continuous */
+  0% { transform: translateY(0) scaleY(1) scaleX(1); opacity: 0.7; }
+  50% { transform: translateY(-1.5px) scaleY(1.08) scaleX(1.02); opacity: 1; } /* Adjusted for more 2D pulse */
+  100% { transform: translateY(0) scaleY(1) scaleX(1); opacity: 0.7; }
+}
+.hover-animate-layers-pulse:hover .animated-domain-platform-icon-svg > g > rect { /* Kept hover separate */
+  animation: domain-layer-breathe 1.5s ease-in-out infinite alternate;
+}
+
+
+@keyframes lightbulb-glow-in-reveal { /* For Strategic Consulting Icon */
   0% { opacity: 0; filter: drop-shadow(0 0 0px hsl(var(--primary)/0)); transform: scale(0.8); }
   50% { opacity: 0.8; filter: drop-shadow(0 0 10px hsl(var(--primary)/0.5)); transform: scale(1.05); }
   100% { opacity: 1; filter: drop-shadow(0 0 5px hsl(var(--primary)/0.3)); transform: scale(1); }
@@ -249,7 +250,28 @@ body {
   animation: lightbulb-glow-in-reveal 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
 }
 
-@keyframes brain-fade-in-reveal {
+@keyframes strategic-lightbulb-pulse { /* For Strategic Consulting Icon - internal continuous */
+  0%, 100% {
+    fill-opacity: 0.6;
+    filter: drop-shadow(0 0 6px hsla(var(--primary), 0.4)) drop-shadow(0 0 2px hsla(var(--primary), 0.3));
+  }
+  50% {
+    fill-opacity: 1;
+    filter: drop-shadow(0 0 12px hsla(var(--primary), 0.8)) drop-shadow(0 0 6px hsla(var(--primary), 0.6)); /* Enhanced glow */
+  }
+}
+@keyframes strategic-light-ray-animate { /* For Strategic Consulting Icon - internal continuous */
+  0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50% { opacity: 0.7; transform: scale(1.2) rotate(10deg); } /* Increased scale */
+  100% { opacity: 0; transform: scale(1.5) rotate(20deg); } /* Increased scale */
+}
+.hover-filter-lightbulb-glow:hover .animated-strategic-consulting-icon-svg { /* Kept hover separate */
+  filter: drop-shadow(0 0 12px hsl(var(--primary)/0.9)) drop-shadow(0 0 5px hsl(var(--primary)/0.6));
+  transition: filter 0.3s ease-out;
+}
+
+
+@keyframes brain-fade-in-reveal { /* For Custom Solutions Icon */
   0% { opacity: 0; transform: translateY(8px) scale(0.9); }
   100% { opacity: 1; transform: translateY(0px) scale(1); }
 }
@@ -257,65 +279,33 @@ body {
   animation: brain-fade-in-reveal 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
 }
 
-.animate-continuous-brain-pulse {
-  animation: icon-gentle-pulse-continuous 3s ease-in-out 1s infinite; /* Delay matches brain-fade-in-reveal duration + its own delay */
-}
-
-@keyframes icon-gentle-pulse-continuous {
+@keyframes icon-gentle-pulse-continuous { /* For Custom Solutions Icon - internal continuous */
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); } /* Only affects transform, not opacity */
+  50% { transform: scale(1.02); } 
+}
+.animate-continuous-brain-pulse { /* Utility class for the Brain's continuous pulse */
+  animation: icon-gentle-pulse-continuous 3s ease-in-out 1s infinite; /* Delay (1s) should be > brain-fade-in-reveal duration (0.5s) + its delay (0.5s) */
 }
 
-/* Hover utility classes for Core Offerings Icons */
-.hover-animate-layers-pulse:hover .animated-domain-platform-icon-svg > g > rect {
-  animation: domain-layer-breathe 1.5s ease-in-out infinite alternate;
+@keyframes custom-solution-node-appear { /* For Custom Solutions Icon - internal */
+  0% { opacity: 0; r: 0; transform: scale(0.7); } /* Added transform scale */
+  100% { opacity: 1; r: 3; transform: scale(1); }
 }
-.hover-filter-lightbulb-glow:hover .animated-strategic-consulting-icon-svg {
-  filter: drop-shadow(0 0 12px hsl(var(--primary)/0.9)) drop-shadow(0 0 5px hsl(var(--primary)/0.6));
-  transition: filter 0.3s ease-out;
+@keyframes custom-solution-line-draw { /* For Custom Solutions Icon - internal */
+  from { stroke-dashoffset: 50; opacity: 0; }
+  to { stroke-dashoffset: 0; opacity: 1; } /* Ensured final opacity is 1 */
 }
-.hover-transform-brain-scale:hover .animated-custom-solutions-icon-svg {
+@keyframes custom-solution-node-pulse { /* For Custom Solutions Icon - internal continuous */
+  0%, 100% { fill-opacity: 0.5; transform: scale(1); }
+  50% { fill-opacity: 0.9; transform: scale(1.18); } /* Added transform scale */
+}
+.hover-transform-brain-scale:hover .animated-custom-solutions-icon-svg { /* Kept hover separate */
   transform: scale(1.05);
   transition: transform 0.2s ease-out;
 }
 
-/* Auto-playing animations for Core Offerings SVGs (internal parts) */
-@keyframes domain-layer-breathe {
-  0%, 100% { transform: translateY(0) scaleY(1) scaleX(1); opacity: 0.7; }
-  50% { transform: translateY(-1.5px) scaleY(1.08) scaleX(1.02); opacity: 1; }
-}
-
-@keyframes strategic-lightbulb-pulse {
-  0%, 100% {
-    fill-opacity: 0.6;
-    filter: drop-shadow(0 0 3px hsla(var(--primary), 0.3)) drop-shadow(0 0 1px hsla(var(--primary), 0.2));
-  }
-  50% {
-    fill-opacity: 1;
-    filter: drop-shadow(0 0 10px hsla(var(--primary), 0.7)) drop-shadow(0 0 5px hsla(var(--primary), 0.5));
-  }
-}
-@keyframes strategic-light-ray-animate {
-  0% { opacity: 0; transform: scale(0.3) rotate(0deg); }
-  50% { opacity: 0.6; transform: scale(1) rotate(10deg); }
-  100% { opacity: 0; transform: scale(1.3) rotate(20deg); }
-}
-
-@keyframes custom-solution-node-appear {
-  from { opacity: 0; r: 0; transform: scale(0.5); }
-  to { opacity: 1; r: 3; transform: scale(1); }
-}
-@keyframes custom-solution-line-draw {
-  from { stroke-dashoffset: 50; opacity: 0; }
-  to { stroke-dashoffset: 0; opacity: 0.8; }
-}
-@keyframes custom-solution-node-pulse {
-  0%, 100% { fill-opacity: 0.5; transform: scale(1); }
-  50% { fill-opacity: 0.9; transform: scale(1.15); }
-}
-
-/* Animations for About Page - Core Value Icons */
-@keyframes icon-container-reveal { /* For the circular background of core value icons */
+/* Core Value Card Icon Animations (About Page) */
+@keyframes icon-container-reveal { /* For the circular background of the Lucide icon */
   0% { opacity: 0; transform: scale(0.8) translateY(10px); }
   100% { opacity: 1; transform: scale(1) translateY(0px); }
 }
@@ -324,7 +314,7 @@ body {
   100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
-/* Animations for Platform Pillar Card Visuals */
+/* Platform Pillar Card Visualizations Animations */
 @keyframes pillar-data-flow-path {
   0% { stroke-dashoffset: 70; opacity: 0.3; }
   50% { stroke-dashoffset: 35; opacity: 0.8; }
@@ -338,7 +328,7 @@ body {
   0%, 100% { transform: scale(0.8); opacity: 0.4; }
   50% { transform: scale(1); opacity: 0.8; }
 }
-@keyframes pillar-bar-grow-reveal {
+@keyframes pillar-bar-grow-reveal { /* For Platform Pillar Bar Chart */
   from { transform: scaleY(0); opacity: 0; }
   to { transform: scaleY(1); opacity: 1; }
 }
@@ -346,55 +336,49 @@ body {
 /* Hero Text Shimmer Effect */
 @keyframes shimmer-effect {
   0% {
-    transform: translateX(-150%) skewX(-30deg);
+    transform: translateX(-150%) skewX(-30deg); /* Start far left */
   }
-  5% { /* Shimmer moves into view */
-    transform: translateX(-50%) skewX(-30deg);
+  /* A single sweep from far-left to far-right over 15% of the animation cycle.
+     The 'ease-out' timing function will make this sweep start fast and decelerate. */
+  15% { 
+    transform: translateX(500%) skewX(-30deg); /* Move completely off-screen to the right */
   }
-  10% { /* Shimmer moves fully across */
-    transform: translateX(50%) skewX(-30deg);
-  }
-  15% { /* Shimmer moves off screen */
-     transform: translateX(150%) skewX(-30deg);
-  }
-  100% { /* Reset for next loop iteration */
-    transform: translateX(150%) skewX(-30deg);
+  /* For the rest of the cycle (15% to 100%), it stays off-screen. */
+  100% { 
+    transform: translateX(500%) skewX(-30deg); /* Stay far right */
   }
 }
 
 .text-shimmer {
   position: relative;
   overflow: hidden;
-  display: inline-block; /* Crucial for span wrapping and correct sizing */
+  display: inline-block; 
 }
 
 .text-shimmer::before {
   content: "";
   position: absolute;
-  top: -10%; /* Extend slightly beyond text boundaries */
+  top: -10%; 
   left: 0;
-  width: 30%; /* Width of the shimmer element */
-  height: 120%; /* Height of the shimmer element */
+  width: 30%; 
+  height: 120%; 
   background: linear-gradient(
     to right,
-    hsla(0, 0%, 100%, 0) 0%,       /* Transparent edge */
-    hsla(0, 0%, 100%, 0.3) 50%,   /* White, semi-transparent core for light mode */
-    hsla(0, 0%, 100%, 0) 100%      /* Transparent edge */
+    hsla(0, 0%, 100%, 0) 0%,       
+    hsla(0, 0%, 100%, 0.20) 50%, /* Light theme shimmer opacity */
+    hsla(0, 0%, 100%, 0) 100%      
   );
-  /* Animation: runs every 8s, lasts ~0.8s (10% of 8s), starts after 2s delay */
-  animation: shimmer-effect 8s ease-in-out infinite 2s;
-  pointer-events: none; /* So it doesn't interfere with text selection */
-  z-index: 1; /* Ensures shimmer is an overlay */
+  animation: shimmer-effect 6s ease-out infinite 2s;
+  pointer-events: none; 
+  z-index: 1; 
 }
 
 .dark .text-shimmer::before {
   background: linear-gradient(
     to right,
-    hsla(var(--foreground-dark), 0) 0%,       /* Transparent edge */
-    hsla(var(--foreground-dark), 0.2) 50%,  /* Subtle light foreground shimmer for dark mode */
-    hsla(var(--foreground-dark), 0) 100%      /* Transparent edge */
+    hsla(0, 0%, 100%, 0) 0%, 
+    hsla(0, 0%, 100%, 0.30) 50%, /* Dark theme shimmer opacity */
+    hsla(0, 0%, 100%, 0) 100%      
   );
 }
-    
-
     
